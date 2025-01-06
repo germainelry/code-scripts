@@ -54,7 +54,7 @@ def get_schedule():
     Validates:
     - run_date format is DD/MM/YYYY.
     - start_time and end_time are at least 1 hour apart.
-    If the user provides no input, defaults are used.
+    If the user provides no input for times, defaults are used based on current time.
     """
     # Default values based on the current time
     current_time = datetime.now()
@@ -77,7 +77,13 @@ def get_schedule():
             except ValueError:
                 print("Error: Invalid date format. Please enter the date in DD/MM/YYYY format.")
 
-        # Prompt for start_time and end_time
+        # Determine default times based on current time
+        if run_date == default_run_date:
+            # If run_date is today, use current time for dynamic defaults
+            current_time = datetime.now()
+            default_start_time = (current_time + timedelta(hours=1)).strftime("%H:%M")
+            default_end_time = (current_time + timedelta(hours=3)).strftime("%H:%M")
+
         start_time = input(f"Enter start time (HH:MM) or press Enter to use default ({default_start_time}): ").strip()
         start_time = start_time if start_time else default_start_time
 
