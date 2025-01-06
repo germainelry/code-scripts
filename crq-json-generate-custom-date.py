@@ -39,6 +39,7 @@ def validate_json(data):
 def get_schedule():
     """
     Prompts the user to specify a custom run_date, start_time, and end_time.
+    Validates that start_time and end_time are at least 1 hour apart.
     If the user provides no input, defaults are used.
     """
     # Default values based on the current time
@@ -47,15 +48,52 @@ def get_schedule():
     default_start_time = (current_time + timedelta(hours=1)).strftime("%H:%M")
     default_end_time = (current_time + timedelta(hours=3)).strftime("%H:%M")
 
-    # Prompt user for custom values
-    run_date = input(f"Enter run date (DD/MM/YYYY) or press Enter to use default ({default_run_date}): ").strip()
-    start_time = input(f"Enter start time (HH:MM) or press Enter to use default ({default_start_time}): ").strip()
-    end_time = input(f"Enter end time (HH:MM) or press Enter to use default ({default_end_time}): ").strip()
+def get_schedule():
+    """
+    Prompts the user to specify a custom run_date, start_time, and end_time.
+    Validates:
+    - run_date format is DD/MM/YYYY.
+    - start_time and end_time are at least 1 hour apart.
+    If the user provides no input, defaults are used.
+    """
+    # Default values based on the current time
+    current_time = datetime.now()
+    default_run_date = current_time.strftime("%d/%m/%Y")
+    default_start_time = (current_time + timedelta(hours=1)).strftime("%H:%M")
+    default_end_time = (current_time + timedelta(hours=3)).strftime("%H:%M")
 
-    # Use defaults if no input is provided
-    run_date = run_date if run_date else default_run_date
-    start_time = start_time if start_time else default_start_time
-    end_time = end_time if end_time else default_end_time
+    # Initialize variables for validation
+    run_date = start_time = end_time = None
+
+    while True:
+        # Prompt for run_date
+        while True:
+            run_date = input(f"Enter run date (DD/MM/YYYY) or press Enter to use default ({default_run_date}): ").strip()
+            run_date = run_date if run_date else default_run_date
+            try:
+                # Validate run_date format
+                datetime.strptime(run_date, "%d/%m/%Y")
+                break  # Valid date
+            except ValueError:
+                print("Error: Invalid date format. Please enter the date in DD/MM/YYYY format.")
+
+        # Prompt for start_time and end_time
+        start_time = input(f"Enter start time (HH:MM) or press Enter to use default ({default_start_time}): ").strip()
+        start_time = start_time if start_time else default_start_time
+
+        end_time = input(f"Enter end time (HH:MM) or press Enter to use default ({default_end_time}): ").strip()
+        end_time = end_time if end_time else default_end_time
+
+        # Validate that start_time and end_time are at least 1 hour apart
+        try:
+            start_dt = datetime.strptime(f"{run_date} {start_time}", "%d/%m/%Y %H:%M")
+            end_dt = datetime.strptime(f"{run_date} {end_time}", "%d/%m/%Y %H:%M")
+            if (end_dt - start_dt).total_seconds() >= 3600:
+                break  # Valid schedule
+            else:
+                print("Error: End time must be at least 1 hour after start time. Please re-enter.")
+        except ValueError:
+            print("Error: Invalid time format. Please re-enter.")
 
     return run_date, start_time, end_time
 
