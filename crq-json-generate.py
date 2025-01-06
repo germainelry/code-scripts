@@ -7,17 +7,34 @@ def clean_input(input_string, default_list=None, to_lowercase=False):
     Cleans and validates a user input string, splitting it into a list of cleaned values.
     Accepts delimiters like commas, semicolons, spaces, line breaks, and tabs.
     Converts items to lowercase if 'to_lowercase' is True.
+    Strips any surrounding quotation marks.
+    Preserves the order of input.
     """
     if default_list is None:
         default_list = []
     # Split by common delimiters (comma, semicolon, space, line break, tab)
     cleaned_list = re.split(r'[,\n;\t ]+', input_string.strip())
-    # Remove empty strings and duplicates
-    cleaned_list = [item.strip() for item in cleaned_list if item.strip()]
+    # Remove empty strings and strip surrounding quotes
+    cleaned_list = [item.strip().strip('"').strip("'") for item in cleaned_list if item.strip()]
     # Convert to lowercase if required
     if to_lowercase:
         cleaned_list = [item.lower() for item in cleaned_list]
-    return list(set(default_list + cleaned_list))
+    # Remove duplicates while preserving order
+    seen = set()
+    ordered_list = [item for item in default_list + cleaned_list if not (item in seen or seen.add(item))]
+    return ordered_list
+
+def validate_json(data):
+    """
+    Validates the JSON structure to ensure it is properly formatted.
+    Returns True if valid, raises an exception otherwise.
+    """
+    try:
+        json.dumps(data)  # Attempt to serialize the JSON data
+        return True
+    except (TypeError, ValueError) as e:
+        print(f"JSON validation error: {e}")
+        raise
 
 def generate_json():
     # Prompting user for inputs
@@ -66,6 +83,10 @@ def generate_json():
         ]
     }
 
+    # Validate JSON structure before saving
+    if validate_json(json_data):
+        print("JSON validation successful.")
+    
     # Path to save the file
     file_directory = "/Users/germaineluah/Documents/Documents - Germaine’s MacBook Air/code/uob-code/created-crqs/"
     file_name = f"{crq}.json"
