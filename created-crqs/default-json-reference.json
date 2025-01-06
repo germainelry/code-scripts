@@ -1,6 +1,6 @@
 {
   "CRQ": "CRQ000000913562",
-  "purpose": "SITWindows Servers Reinstall DSA HIPS Agent",
+  "purpose": "SIT Windows Servers Reinstall DSA HIPS Agent",
   "type": "cookbook",
   "cookname": "uob_deepsecurity_all",
   "email": "sggpisinfraautomationprocessengineering@uobgroup.com,Chiang.FENG@uobgroup.com",
