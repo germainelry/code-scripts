@@ -1,0 +1,20 @@
+{
+    "CRQ": "CRQ000000913562",
+    "purpose": "deploy agent",
+    "type": "cookbook",
+    "cookname": "uob_deepsecurity_all",
+    "email": "germaineluah@uobgroup.com",
+    "servers": [
+        "lax21123linux"
+    ],
+    "schedules": [
+        {
+            "run_date": "06/01/2025",
+            "start_time": "22:26",
+            "end_time": "00:26",
+            "recipes": [
+                "uob_deepsecurity_all"
+            ]
+        }
+    ]
+}
