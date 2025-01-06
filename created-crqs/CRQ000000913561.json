@@ -1,0 +1,23 @@
+{
+    "CRQ": "CRQ000000913561",
+    "purpose": "SIT Windows Servers Reinstall DSA HIPS Agent",
+    "type": "cookbook",
+    "cookname": "uob_deepsecurity_all",
+    "email": [
+        "germaine.LUAH@uobGROUP.com",
+        "sggpisinfraautomationprocessengineering@uobgroup.com"
+    ],
+    "servers": [
+        "cxcbrtsgv99ntcbrtsqltv02ntcbrtsqltv01ntcdd"
+    ],
+    "schedules": [
+        {
+            "run_date": "06/01/2025",
+            "start_time": "22:54",
+            "end_time": "00:54",
+            "recipes": [
+                "uob_deepsecurity_all"
+            ]
+        }
+    ]
+}

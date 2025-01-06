@@ -1,19 +1,22 @@
 {
     "CRQ": "CRQ000000913562",
-    "purpose": "deploy agent",
+    "purpose": "SIT Windows Server Upgrade Hips - agent",
     "type": "cookbook",
     "cookname": "uob_deepsecurity_all",
-    "email": "germaineluah@uobgroup.com",
+    "email": [
+        "sggpisinfraautomationprocessengineering@uobgroup.com",
+        "germaineluah@UOBgrouP.com"
+    ],
     "servers": [
-        "lax21123linux"
+        "cxcbrtsgv99"
     ],
     "schedules": [
         {
             "run_date": "06/01/2025",
-            "start_time": "22:26",
-            "end_time": "00:26",
+            "start_time": "22:53",
+            "end_time": "00:53",
             "recipes": [
-                "uob_deepsecurity_all"
+                "ntcbrtsqltv02"
             ]
         }
     ]

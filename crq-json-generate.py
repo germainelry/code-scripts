@@ -23,24 +23,30 @@ def generate_json():
     # Prompting user for inputs
     crq = input("Enter the CRQ number (e.g., CRQ000000913562): ")
     purpose = input("Enter the purpose of the deployment: ")
-    cookname = input("Enter the Chef cookbook name (cookname): ")
+    cookname = input("Enter the Chef cookbook name: ")
     
     # Default emails
     default_emails = ["sggpisinfraautomationprocessengineering@uobgroup.com"]
     additional_emails = input("Enter additional email addresses (separated by commas, semicolons, spaces, or line breaks). Press Enter if none: ")
     emails = clean_input(additional_emails, default_list=default_emails)
+    email_string = ",".join(emails)  # Convert email list to a single comma-separated string
     
     server_input = input("Enter the list of servers (separated by commas, semicolons, spaces, or line breaks): ")
     servers = clean_input(server_input, to_lowercase=True)
     
-    specific_recipe = input(f"Do you want a specific recipe different from '{cookname}'? Enter recipe name or press Enter to use default: ")
+    specific_recipe = input(f"Do you want to run a specific recipe from '{cookname}'? Enter recipe name or press Enter to use default: ")
 
     # Default values for schedules
     current_time = datetime.now()
     run_date = current_time.strftime("%d/%m/%Y")
     start_time = (current_time + timedelta(hours=1)).strftime("%H:%M")
     end_time = (current_time + timedelta(hours=3)).strftime("%H:%M")
-    recipes = [specific_recipe.strip()] if specific_recipe else [cookname]
+    
+    # Recipe formatting
+    if specific_recipe.strip():
+        recipes = [f"{cookname}::{specific_recipe.strip()}"]
+    else:
+        recipes = [cookname]
 
     # Creating the JSON structure
     json_data = {
@@ -48,7 +54,7 @@ def generate_json():
         "purpose": purpose,
         "type": "cookbook",
         "cookname": cookname,
-        "email": emails,
+        "email": email_string,
         "servers": servers,
         "schedules": [
             {
