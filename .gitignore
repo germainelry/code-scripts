@@ -1,0 +1,7 @@
+created-crqs
+
+# Ignore all .env files
+*.env
+
+# Ignore entire directories
+secrets/
