@@ -1,0 +1,24 @@
+{
+    "CRQ": "CRQ000000913568",
+    "purpose": "upgrade dsa agent SIT servers",
+    "type": "cookbook",
+    "cookname": "uob_deepsight_all",
+    "email": "sggipsinfraautomationprocessengineering@uobgroup.com,germaine.luah@uobgroup.com,varshneyrak.hee@uobgroup.com",
+    "servers": [
+        "lxcbrtsgv99nttcbrtsqltv02ntcbrtsqltv01ntcbrtsgv99"
+    ],
+    "schedules": [
+        {
+            "recipe": "uob_deepsight_all::stage1_check",
+            "run_date": "10/01/2025",
+            "start_time": "08:00",
+            "end_time": "09:00"
+        },
+        {
+            "recipe": "uob_deepsight_all::stage2_validation",
+            "run_date": "11/01/2025",
+            "start_time": "08:00",
+            "end_time": "09:00"
+        }
+    ]
+}
