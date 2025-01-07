@@ -6,4 +6,5 @@ uob-code/C:\Users\OPSRO1\Desktop\code\CRQ Scheduling\created-crqs
 *.env
 
 # Ignore entire directories
+secrets.py
 secrets/

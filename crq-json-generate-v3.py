@@ -3,12 +3,13 @@ import os
 from datetime import datetime, timedelta
 import re
 import logging
+import secrets  # Import the secrets.py file
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 DEFAULT_DIRECTORY = "C:\\Users\\OPSRO1\\Desktop\\code\\CRQ Scheduling\\created-crqs"
-DEFAULT_EMAILS = ["sggipsinfraautomationprocessengineering@uobgroup.com"]
+DEFAULT_EMAILS = secrets.DEFAULT_EMAILS  # Use the email list from secrets.py
 
 
 def clean_input(input_string: str, default_list: list = None, to_lowercase: bool = False) -> list:
