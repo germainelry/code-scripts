@@ -111,7 +111,7 @@ def generate_json():
     cookname = input("Enter the Chef cookbook name: ")
 
     # Default emails
-    default_emails = ["sggpisinfraautomationprocessengineering@uobgroup.com"]
+    default_emails = ["sggipsinfraautomationprocessengineering@uobgroup.com"]
     additional_emails = input("Enter additional email addresses (separated by commas, semicolons, spaces, or line breaks). Press Enter if none: ")
     emails = clean_input(additional_emails, default_list=default_emails)
     email_string = ",".join(emails)  # Convert email list to a single comma-separated string
