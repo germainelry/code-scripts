@@ -1,3 +1,4 @@
+# To not track the created CRQs when running the code
 created-crqs/
 
 # Ignore all .env files
