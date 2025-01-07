@@ -1,0 +1,10 @@
+# To not track the created CRQs when running the code
+created-crqs/
+uob-code/C:\Users\OPSRO1\Desktop\code\CRQ Scheduling\created-crqs
+
+# Ignore all .env files
+*.env
+
+# Ignore entire directories
+secrets.py
+secrets/
