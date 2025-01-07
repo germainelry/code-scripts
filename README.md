@@ -1,4 +1,4 @@
-# My Life-Easing Scripts 🧑‍💻✨
+# Productivity Scripts 🧑‍💻✨
 
 This repo contains a collection of scripts that tackle various mundane tasks, making life a 'lil easier! 😎 Feel free to use, modify, or add your own scripts to contribute. 🚀
 
