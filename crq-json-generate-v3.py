@@ -14,8 +14,7 @@ DEFAULT_EMAILS = ["sggipsinfraautomationprocessengineering@uobgroup.com"]
 def clean_input(input_string: str, default_list: list = None, to_lowercase: bool = False) -> list:
     if default_list is None:
         default_list = []
-    cleaned_list = re.split(r'[,
-;\t ]+', input_string.strip())
+    cleaned_list = re.split(r'[,;\t ]+', input_string.strip())
     cleaned_list = [item.strip().strip('"').strip("'") for item in cleaned_list if item.strip()]
     if to_lowercase:
         cleaned_list = [item.lower() for item in cleaned_list]
@@ -23,7 +22,7 @@ def clean_input(input_string: str, default_list: list = None, to_lowercase: bool
     return [item for item in default_list + cleaned_list if not (item in seen or seen.add(item))]
 
 
-def clean_servers(input_string: str, naming_pattern: str = r'([a-z]+[a-z]{2}[a-z]?[a-z]{2}[v]?\d+)') -> list:
+def clean_servers(input_string: str, naming_pattern: str = r'[a-z]+[a-z]{2}[a-z]?[a-z]{2}[v]?\d+') -> list:
     """
     Cleans and splits server input based on the organization's naming convention.
     Extracts server names matching the provided regex pattern.
@@ -35,12 +34,11 @@ def clean_servers(input_string: str, naming_pattern: str = r'([a-z]+[a-z]{2}[a-z
     Returns:
     - A list of valid server names.
     """
-    potential_servers = re.split(r'[,
-;\t ]+', input_string.strip())
-    servers = [server.lower() for server in potential_servers if re.match(naming_pattern, server.lower())]
+    # Find all matches for server names in the concatenated string
+    servers = re.findall(naming_pattern, input_string.strip().lower())
+    # Remove duplicates while preserving order
     seen = set()
     return [server for server in servers if not (server in seen or seen.add(server))]
-
 
 def clean_recipes(input_string: str, cookname: str) -> list:
     """
@@ -50,8 +48,7 @@ def clean_recipes(input_string: str, cookname: str) -> list:
     """
     if not input_string.strip():
         return [cookname]  # Default to cookname if no recipes are specified
-    recipes = re.split(r'[,
-;\t ]+', input_string.strip())
+    recipes = re.split(r'[,;\t ]+', input_string.strip())
     recipes = [recipe.strip() for recipe in recipes if recipe.strip()]
     return [f"{cookname}::{recipe}" for recipe in recipes]
 
@@ -103,15 +100,21 @@ def get_recipe_schedules(recipes: list) -> list:
     - A list of dictionaries, each containing a recipe and its schedule.
     """
     schedules = []
+    default_run_date = datetime.now().strftime("%d/%m/%Y")
+    default_start_time = (datetime.now() + timedelta(hours=1)).strftime("%H:%M")
+    default_end_time = (datetime.now() + timedelta(hours=3)).strftime("%H:%M")
+
     for recipe in recipes:
         print(f"\nConfiguring schedule for recipe: {recipe}")
         use_default = input("Do you want to use the default schedule? (y/n): ").strip().lower()
-        
+
         if use_default == 'y':
-            # Use default schedule
-            run_date, start_time, end_time = get_schedule()
+            # Use static defaults for the schedule
+            run_date = default_run_date
+            start_time = default_start_time
+            end_time = default_end_time
         else:
-            # Custom schedule for this recipe
+            # Prompt user for a custom schedule
             while True:
                 run_date = input(f"Enter run date for {recipe} (DD/MM/YYYY): ").strip()
                 try:
