@@ -22,7 +22,7 @@ def clean_input(input_string: str, default_list: list = None, to_lowercase: bool
     return [item for item in default_list + cleaned_list if not (item in seen or seen.add(item))]
 
 
-def clean_servers(input_string: str, naming_pattern: str = r'^[a-z]+[a-z]{2}[a-z]?[a-z]{2}[v]?\d+$') -> list:
+def clean_servers(input_string: str, naming_pattern: str = r'([a-z]+[a-z]{2}[a-z]?[a-z]{2}[v]?\\d+)') -> list:
     """
     Cleans and splits server input based on the organization's naming convention.
     Extracts server names matching the provided regex pattern.
@@ -34,8 +34,9 @@ def clean_servers(input_string: str, naming_pattern: str = r'^[a-z]+[a-z]{2}[a-z
     Returns:
     - A list of valid server names.
     """
-    potential_servers = re.split(r'[,;\t ]+', input_string.strip())
-    servers = [server.lower() for server in potential_servers if re.match(naming_pattern, server.lower())]
+    # Match valid server names based on the naming pattern
+    servers = re.findall(naming_pattern, input_string.strip().lower())
+    # Remove duplicates while preserving order
     seen = set()
     return [server for server in servers if not (server in seen or seen.add(server))]
 
