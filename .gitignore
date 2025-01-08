@@ -1,1 +1,10 @@
+# Ignore files
 crq-reference.json
+
+# Ignore all .env files
+*.env
+
+# Ignore entire directories
+secrets.py
+secrets/
+crq-scheduling
