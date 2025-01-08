@@ -8,7 +8,7 @@ import secrets  # Import the secrets.py file
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-DEFAULT_DIRECTORY = "C:\\Users\\OPSRO1\\Desktop\\code\\CRQ Scheduling\\created-crqs"
+DEFAULT_DIRECTORY = "C:\\Users\\OPSRO1\\Desktop\\code\\CRQ Scheduling\\created-crqs" # input directory to save .json files to
 DEFAULT_EMAILS = secrets.DEFAULT_EMAILS  # Use the email list from secrets.py
 
 
