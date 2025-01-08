@@ -44,7 +44,7 @@ This Python script is designed to automate the generation of JSON files for sche
     1. Add the file to `.gitignore`:
        - Open the `.gitignore` file in your project root. If it doesn't exist, create a new file named `.gitignore`.
        - Add the following line to ignore your sensitive file (replace `sensitive-file.json` with the actual file name):
-         ```
+         ```bash
          sensitive-file.json
          ```
        - Save the `.gitignore` file.
@@ -52,21 +52,21 @@ This Python script is designed to automate the generation of JSON files for sche
     2. Stop Git from Tracking the File:
        If the file is already being tracked by Git, you'll need to remove it from Git's index. Run the following command in your terminal (replace  
        `sensitive-file.json` with the actual file name):
-       ```
+       ```bash
        git rm --cached sensitive-file.json
        ```
        This will stop Git from tracking the file, but it will remain on your local machine.
     
     3. Commit the Changes:
        After updating the `.gitignore` file and removing the file from tracking, commit the changes:
-       ```
+       ```bash
        git add .gitignore
        git commit -m "Stop tracking sensitive-file.json"
        ```
     
     4. Push the Changes:
        Finally, push the changes to the remote repository:
-       ```
+       ```bash
        git push
        ```
     After completing these steps, Git will no longer track `sensitive-file.json` (or any sensitive file you specify), and it will be ignored in           future commits.
