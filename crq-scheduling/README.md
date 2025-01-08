@@ -37,8 +37,40 @@ This Python script is designed to automate the generation of JSON files for sche
     source venv/bin/activate  # For Linux/Mac
     venv\Scripts\activate  # For Windows
     ```
+4. How to Stop Tracking a Sensitive File in Git
 
-4. Ensure you have any required dependencies (if applicable).
+    If you do not want to track a sensitive file (such as `your-sensitive-file.json`), follow these steps:
+    
+    1. Add the file to `.gitignore`:
+       - Open the `.gitignore` file in your project root. If it doesn't exist, create a new file named `.gitignore`.
+       - Add the following line to ignore your sensitive file (replace `your-sensitive-file.json` with the actual file name):
+         ```
+         your-sensitive-file.json
+         ```
+       - Save the `.gitignore` file.
+    
+    2. Stop Git from Tracking the File:
+       If the file is already being tracked by Git, you'll need to remove it from Git's index. Run the following command in your terminal (replace `your-sensitive-file.json` with the actual file name):
+       ```
+       git rm --cached your-sensitive-file.json
+       ```
+       This will stop Git from tracking the file, but it will remain on your local machine.
+    
+    3. Commit the Changes:
+       After updating the `.gitignore` file and removing the file from tracking, commit the changes:
+       ```
+       git add .gitignore
+       git commit -m "Stop tracking your-sensitive-file.json"
+       ```
+    
+    4. Push the Changes:
+       Finally, push the changes to the remote repository:
+       ```
+       git push
+       ```
+    After completing these steps, Git will no longer track `your-sensitive-file.json` (or any sensitive file you specify), and it will be ignored in      future commits.
+
+5. Ensure you have any required dependencies (if applicable).
 
 ## Usage
 
