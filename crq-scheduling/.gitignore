@@ -1,6 +1,7 @@
 # To not track the created CRQs when running the code
 created-crqs/
 /Users/germaineluah/Documents/Documents - Germaine’s MacBook Air/code/uob-code/crq-scheduling/C:\Users\OPSRO1\Desktop\code\CRQ Scheduling\created-crqs
+/Users/germaineluah/Documents/Documents - Germaine’s MacBook Air/code/uob-code/crq-reference.json
 
 # Ignore all .env files
 *.env
