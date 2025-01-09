@@ -142,7 +142,7 @@ def get_recipe_schedules(recipes: list) -> list:
             "run_date": run_date,
             "start_time": start_time,
             "end_time": end_time,
-            "recipes": recipe
+            "recipes": [recipe]
         })
 
     return schedules
