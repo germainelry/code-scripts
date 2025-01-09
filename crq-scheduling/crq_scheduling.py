@@ -139,10 +139,10 @@ def get_recipe_schedules(recipes: list) -> list:
 
         # Append schedule for the recipe
         schedules.append({
-            "recipe": recipe,
             "run_date": run_date,
             "start_time": start_time,
-            "end_time": end_time
+            "end_time": end_time,
+            "recipes": recipe
         })
 
     return schedules
