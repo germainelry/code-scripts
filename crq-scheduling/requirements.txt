@@ -1,0 +1,51 @@
+# Core Utilities
+numpy           # Numerical operations
+pandas          # Data manipulation and analysis
+python-dotenv   # Managing environment variables
+requests        # HTTP requests handling
+loguru          # Logging made easy
+
+# Data Visualization
+matplotlib      # Basic plotting
+seaborn         # Statistical data visualization
+plotly          # Interactive plots
+
+# Web Development (optional, if using Flask/Django)
+flask           # Lightweight web framework
+django          # Full-featured web framework
+fastapi         # High-performance web framework for APIs
+
+# Database Interaction
+sqlalchemy      # SQL toolkit and ORM
+pymongo         # MongoDB interaction
+psycopg2-binary # PostgreSQL adapter for Python
+
+# Machine Learning & AI
+scikit-learn    # Machine learning algorithms
+tensorflow      # Deep learning framework
+torch           # PyTorch for deep learning
+xgboost         # Gradient boosting framework
+
+# Linting, Formatting, and Testing
+black           # Code formatting
+flake8          # Linting tool
+pytest          # Testing framework
+
+# Virtual Environment & Dependency Management
+pipenv          # Python dependency manager
+virtualenv      # Virtual environments
+
+# Jupyter and Development Tools
+jupyterlab      # Interactive development with notebooks
+ipython         # Enhanced interactive Python shell
+
+# Serialization and Parsing
+pyyaml          # YAML parser and emitter
+ujson           # Ultra-fast JSON parsing
+
+# Security
+cryptography    # Encryption and cryptography
+bcrypt          # Password hashing
+
+# Type Checking
+mypy            # Static type checker for Python
