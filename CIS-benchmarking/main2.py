@@ -77,8 +77,8 @@ for match in matches:
 # Convert to DataFrame
 df = pd.DataFrame(data)
 
-# Save to Excel for easy review
-output_path = "CIS-benchmarking/CIS_AIX_Controls_with_Profile_v0.xlsx"
-df.to_excel(output_path, index=False)
+# # Save to Excel for easy review
+# output_path = "CIS-benchmarking/CIS_AIX_Controls_with_Profile_v0.xlsx"
+# df.to_excel(output_path, index=False)
 
-print(f"Extraction complete. Data saved to '{output_path}'.")
+# print(f"Extraction complete. Data saved to '{output_path}'.")
