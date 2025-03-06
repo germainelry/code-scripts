@@ -3,7 +3,7 @@ import pandas as pd
 import re
 
 # Load the PDF file
-pdf_path = "documents/CIS_IBM_AIX_7.1_Benchmark_v2.1.0_ARCHIVE.pdf"  # Update your file path
+pdf_path = "CIS-benchmarking\documents\CIS_IBM_AIX_7.1_Benchmark_v2.1.0_ARCHIVE.pdf"  # Update your file path
 doc = pymupdf.open(pdf_path)
 
 # Function to extract text from the PDF
